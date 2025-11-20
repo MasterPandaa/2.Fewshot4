@@ -1,5 +1,6 @@
-import sys
 import random
+import sys
+
 import pygame
 
 # -------------------------
@@ -12,13 +13,14 @@ FPS = 12  # kecepatan permainan (semakin besar semakin cepat)
 # Warna (R, G, B)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-RED   = (255, 0, 0)
+RED = (255, 0, 0)
 GREEN = (0, 200, 0)
-GRAY  = (40, 40, 40)
+GRAY = (40, 40, 40)
 
 # -------------------------
 # Utilitas
 # -------------------------
+
 
 def draw_grid(surface):
     # Garis-garis grid opsional (untuk estetika)
@@ -56,6 +58,7 @@ def is_opposite(dir_a, dir_b):
 # -------------------------
 # Game utama
 # -------------------------
+
 
 def main():
     pygame.init()
@@ -127,8 +130,12 @@ def main():
             new_head = (head_x + direction[0], head_y + direction[1])
 
             # Cek tabrakan dengan dinding
-            if (new_head[0] < 0 or new_head[0] >= WIDTH or
-                new_head[1] < 0 or new_head[1] >= HEIGHT):
+            if (
+                new_head[0] < 0
+                or new_head[0] >= WIDTH
+                or new_head[1] < 0
+                or new_head[1] >= HEIGHT
+            ):
                 game_over = True
             # Cek tabrakan dengan tubuh sendiri
             elif new_head in snake:
@@ -167,9 +174,30 @@ def main():
             overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 160))
             screen.blit(overlay, (0, 0))
-            draw_text(screen, "GAME OVER", 48, WHITE, (WIDTH // 2, HEIGHT // 2 - 30), center=True)
-            draw_text(screen, f"Skor Akhir: {score}", 28, WHITE, (WIDTH // 2, HEIGHT // 2 + 10), center=True)
-            draw_text(screen, "Tekan R untuk Restart | Esc untuk Keluar", 22, WHITE, (WIDTH // 2, HEIGHT // 2 + 45), center=True)
+            draw_text(
+                screen,
+                "GAME OVER",
+                48,
+                WHITE,
+                (WIDTH // 2, HEIGHT // 2 - 30),
+                center=True,
+            )
+            draw_text(
+                screen,
+                f"Skor Akhir: {score}",
+                28,
+                WHITE,
+                (WIDTH // 2, HEIGHT // 2 + 10),
+                center=True,
+            )
+            draw_text(
+                screen,
+                "Tekan R untuk Restart | Esc untuk Keluar",
+                22,
+                WHITE,
+                (WIDTH // 2, HEIGHT // 2 + 45),
+                center=True,
+            )
 
         pygame.display.flip()
 
